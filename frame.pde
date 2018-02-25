@@ -1,0 +1,3 @@
+interface Frame {
+  void frame();
+}
