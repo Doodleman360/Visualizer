@@ -21,6 +21,11 @@ boolean paused = false;
 
 void setup() {
   fullScreen(P3D);
+  textAlign(CENTER, CENTER);
+  textSize(20);
+  
+  background(0);
+  text("Made by: Doodleman, using the Minim library\nContributors: Goofables", width/2, height/4);
 
   minim = new Minim(this);
   //player = minim.loadFile("0"+(int)random(9)+".mp3");
@@ -30,21 +35,20 @@ void setup() {
   //meta = player.getMetaData();
   beat = new BeatDetect();//(player.bufferSize(), player.sampleRate());  <- mode 2
 
-  frames.add(new DotLine());      // 0
-  frames.add(new Land());       // 1
-  frames.add(new Sphere());    // 2
-  frames.add(new SphereLine());     // 3
-  frames.add(new DotCircle()); // 4
-  //frames.add(new Matrix()); // 
-  frames.add(new Waves());      // 5
-  frames.add(new Dots());       // 6
-  frames.add(new Dots4());       // 7
-  frames.add(new Lines());       // 8
-  frames.add(new DotArc());        // 9
-  frames.add(new Window());        // 10 k
+  frames.add(new DotLine());     // 0  a
+  frames.add(new Land());        // 1  b
+  frames.add(new Sphere());      // 2  c
+  frames.add(new SphereLine());  // 3  d
+  frames.add(new DotCircle());   // 4  e
+  //frames.add(new Matrix());    // 
+  frames.add(new Waves());       // 5  f
+  frames.add(new Dots());        // 6  g
+  frames.add(new Dots4());       // 7  h
+  frames.add(new Lines());       // 8  i
+  frames.add(new DotArc());      // 9  j
+  frames.add(new Window());      // 10 k
+  frames.add(new Wave());        // 10 l
 
-  textAlign(CENTER, CENTER);
-  textSize(20);
   noCursor();
   //player.play();
 }
