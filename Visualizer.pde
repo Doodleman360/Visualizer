@@ -29,7 +29,7 @@ void setup() {
   surface.setResizable(true);
   textAlign(CENTER, CENTER);
   textSize(20);
-  //noCursor();
+  noCursor();
 
   background(0);
   text("Made by: Doodleman, using the Minim library\nContributors: Goofables", width/2, height/4);
@@ -55,17 +55,17 @@ void setup() {
   frames.add(new Dots4());       // 9   j
   frames.add(new DotArc());      // 10  k
   frames.add(new Window());      // 11  l
-  //frames.add(new Lines());      // 12  m
+  frames.add(new Lines());      // 12  m
 
   //player.play();
 }
 
 void draw() {
   /*fill(0);
-  noStroke();
-  rect(30, 42, 50, 20);
-  fill(255);
-  text(windowX + " " + windowY, 50, 50);*/
+   noStroke();
+   rect(30, 42, 50, 20);
+   fill(255);
+   text(windowX + " " + windowY, 50, 50);*/
   if (paused) return;
   beat.detect(in.mix);
 
@@ -126,12 +126,14 @@ void keyPressed() {
     if (fullScreen) {
       surface.setSize(displayWidth, 100);
       surface.setLocation(0, 0);
+      cursor();
       //surface.setLocation(displayWidth/2-width/2, displayHeight/2-height/2);
       //windowX = displayWidth/2-width/2;
       //windowY = displayHeight/2-height/2;
     } else {
       surface.setSize(displayWidth, displayHeight);
       surface.setLocation(0, 0);
+      noCursor();
     }
     fullScreen = !fullScreen;
     return;
@@ -149,29 +151,29 @@ void keyPressed() {
   background(0);
   frameRate(60);
   paused = false;
-  println("KeyCode: " + keyCode + " key: '" + key + "'");
+  //println("KeyCode: " + keyCode + " key: '" + key + "'");
 }
 /*
 void mousePressed() {
-  if (fullScreen) return;
-  mx = mouseX;
-  my = mouseY;
-}
-
-void mouseDragged() {
-  if (fullScreen) return;
-  if (noMove) {
-    mx = mouseX;
-    my = mouseY;
-    noMove = false; 
-    return;
-  }
-  int dx = mouseX - mx;
-  int dy = mouseY - my;
-  //println(mouseX + " " + mouseY + " | " + mx + " " + my + " | " + dx + " " + dy + " | " + windowX + " " + windowY);
-  surface.setLocation(windowX + dx, windowY + dx);
-  windowX += dx;
-  windowY += dy;
-  noMove = true;
-}
-*/
+ if (fullScreen) return;
+ mx = mouseX;
+ my = mouseY;
+ }
+ 
+ void mouseDragged() {
+ if (fullScreen) return;
+ if (noMove) {
+ mx = mouseX;
+ my = mouseY;
+ noMove = false; 
+ return;
+ }
+ int dx = mouseX - mx;
+ int dy = mouseY - my;
+ //println(mouseX + " " + mouseY + " | " + mx + " " + my + " | " + dx + " " + dy + " | " + windowX + " " + windowY);
+ surface.setLocation(windowX + dx, windowY + dx);
+ windowX += dx;
+ windowY += dy;
+ noMove = true;
+ }
+ */

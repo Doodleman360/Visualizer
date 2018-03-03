@@ -1,4 +1,4 @@
-class DotArc implements Frame {
+class DotArc extends Frame {
   float amt = in.bufferSize();
   float[] mix = new float[(int)amt];
   boolean vertical = false;

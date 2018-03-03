@@ -1,16 +1,16 @@
-class Land implements Frame {
+class Land extends Frame {
   int cols, rows;
   int scale = 20;
   int up = 120;
-  int w = 2500;
-  int h = 1600;
+  int w, h;
   float Rfade, Gfade, Bfade, Afade;
 
   float[][] land;
   float[] red, green, blue;
 
-  Land() {
-
+  void load() {
+    w = width * 2;
+    h = height * 3/2;
     cols = w / scale;
     rows = h / scale;
 
@@ -27,8 +27,8 @@ class Land implements Frame {
       }
     }
   }
-  void frame() {
 
+  void frame() {
     for (int y = rows-1; y > 0; y--) {
       for (int x = 0; x < cols; x++) {
         land[x][y] = land[x][y-1];

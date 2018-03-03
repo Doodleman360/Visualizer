@@ -1,11 +1,14 @@
-class Dots implements Frame {
+class Dots extends Frame {
   float radius = 20;
   int root = (int)sqrt(in.bufferSize());
-  float dx = width/(int)root;
-  float dy = height/(int)root;
+  float dx, dy;
   int size = in.bufferSize();
 
-
+  void load() {
+    dx = width/(int)root;
+    dy = height/(int)root;
+  }
+  
   public void frame() {
     fill(0, 0, 0, 64);
     noStroke();

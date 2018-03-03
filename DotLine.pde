@@ -1,12 +1,8 @@
-class DotLine implements Frame {
-  float[] array;
+class DotLine extends Frame {
+  float[] array = new float[15];
   float Rfade, Gfade, Bfade, Afade;
 
-  DotLine() {
-    array = new float[15];
-  }
-  @Override
-    public void frame() {
+  public void frame() {
     //background(0);
     fill(0, 0, 0, Afade);
     rect(0, 0, width, height);

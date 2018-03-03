@@ -1,4 +1,4 @@
-class Matrix implements Frame {
+class Matrix extends Frame {
   ArrayList<float[]> matrix = new ArrayList<float[]>();
   double size = in.bufferSize();
   float space = 25.0f;

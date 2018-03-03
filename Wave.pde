@@ -1,10 +1,14 @@
-class Wave implements Frame {
+class Wave extends Frame {
   float amt = in.bufferSize();
-  float w = width / amt;
+  float w;
   float[] wave = new float[(int)amt];
   ArrayList<Integer> max;
   ArrayList<Integer> min;
-
+  
+  void load() {
+    w = width / amt;
+  }
+  
   void frame() {
     colorMode(RGB);
     noStroke();
