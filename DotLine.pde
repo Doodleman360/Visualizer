@@ -8,6 +8,7 @@ class DotLine implements Frame {
   @Override
     public void frame() {
     //background(0);
+    noStroke();
     fill(0, 0, 0, Afade);
     rect(0, 0, width, height);
 
