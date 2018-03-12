@@ -1,6 +1,4 @@
-class DotCircle implements Frame {
-  DotCircle() {
-  }
+class DotCircle extends Frame {
   public void frame() {
     background(0);
     float theta = 0;

@@ -1,4 +1,4 @@
-class Sphere implements Frame {
+class Sphere extends Frame {
 
   PVector[][] globe;
   int total = 200;
@@ -13,6 +13,7 @@ class Sphere implements Frame {
     globe = new PVector[total+1][total+1];
     mix = new float[total+1];
   }
+  
   void frame() {
     colorMode(HSB);
     noStroke();

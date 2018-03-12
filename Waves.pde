@@ -1,6 +1,6 @@
-class Waves implements Frame {
+class Waves extends Frame {
   float amt = in.bufferSize();
-  float w = width / amt;
+  float w;
   float[] mixt = new float[(int)amt];
   float[] maxt = new float[(int)amt];
   float[] mixb = new float[(int)amt];
@@ -8,6 +8,10 @@ class Waves implements Frame {
   float off = 0.90;
   //double counter = 0;
 
+  void load() {
+    w = width / amt;
+  }
+  
   void frame() {
     colorMode(RGB);
     noStroke();

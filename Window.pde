@@ -1,4 +1,4 @@
-class Window implements Frame {
+class Window extends Frame {
   float amt = in.bufferSize();
   ArrayList<Droplet> rain = new ArrayList<Droplet>();
   PImage bg;
@@ -6,6 +6,10 @@ class Window implements Frame {
 
   Window() {
     bg = loadImage("rain/bg.jpg");
+    bg.resize(width, height);
+  }
+  
+  void load() {
     bg.resize(width, height);
   }
 

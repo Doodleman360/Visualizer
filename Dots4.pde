@@ -1,4 +1,4 @@
-class Dots4 implements Frame {
+class Dots4 extends Frame {
   float radius = 20;
   float d1, d2, d3, d4;
   int size = in.bufferSize();

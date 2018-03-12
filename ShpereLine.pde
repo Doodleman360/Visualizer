@@ -1,4 +1,4 @@
-class SphereLine implements Frame {
+class SphereLine extends Frame {
   float[] array;
   float Rfade, Gfade, Bfade, Afade, R = 0;
 

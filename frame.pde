@@ -1,3 +1,4 @@
-interface Frame {
-  void frame();
+abstract class Frame {
+  void frame() {}
+  void load() {}
 }

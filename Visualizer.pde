@@ -18,12 +18,19 @@ boolean fps = false;
 int last = 0;
 boolean updateFps = false;
 boolean paused = false;
+boolean fullScreen = true;
+boolean ontop = false;
+boolean noMove = false;
+int mx, my;
+int windowX, windowY;
 
 void setup() {
   fullScreen(P3D);
+  surface.setResizable(true);
   textAlign(CENTER, CENTER);
   textSize(20);
-  
+  noCursor();
+
   background(0);
   //text("Made by: Doodleman, using the Minim library\nContributors: Goofables", width/2, height/4);
 
@@ -35,26 +42,31 @@ void setup() {
   //meta = player.getMetaData();
   beat = new BeatDetect();//(player.bufferSize(), player.sampleRate());  <- mode 2
 
-  frames.add(new DotLine());     // 0  a
-  frames.add(new Land());        // 1  b
-  frames.add(new Sphere());      // 2  c
-  frames.add(new SphereLine());  // 3  d
-  frames.add(new DotCircle());   // 4  e
+  frames.add(new DotLine());     // 0   a
+  frames.add(new Land());        // 1   b
+  frames.add(new Sphere());      // 2   c
+  frames.add(new SphereLine());  // 3   d
+  frames.add(new DotCircle());   // 4   e
   //frames.add(new Matrix());    // 
-  frames.add(new Waves());       // 5  f
-  frames.add(new Dots());        // 6  g
-  frames.add(new Dots4());       // 7  h
-  frames.add(new Lines());       // 8  i
-  frames.add(new DotArc());      // 9  j
-  //frames.add(new Window());      // 10 k
-  frames.add(new Wave());        // 10 l
+  frames.add(new Wave());        // 5   f
+  frames.add(new Waves());       // 6   g
+  frames.add(new Waves2());      // 7   h
+  frames.add(new Dots());        // 8   i
+  frames.add(new Dots4());       // 9   j
+  frames.add(new DotArc());      // 10  k
+  frames.add(new Window());      // 11  l
+  frames.add(new Lines());      // 12  m
   frames.add(new DotPlane());
 
-  noCursor();
   //player.play();
 }
 
 void draw() {
+  /*fill(0);
+   noStroke();
+   rect(30, 42, 50, 20);
+   fill(255);
+   text(windowX + " " + windowY, 50, 50);*/
   if (paused) return;
   beat.detect(in.mix);
 
@@ -107,17 +119,62 @@ void keyPressed() {
     return;
   case 92: 
     for (int i = 0; i < frames.size(); i++) {
-      if (frames.get(i) instanceof Lines) ((Lines)frames.get(i)).toggle(); 
+      if (frames.get(i) instanceof Waves2) ((Waves2)frames.get(i)).toggle(); 
       if (frames.get(i) instanceof DotArc) ((DotArc)frames.get(i)).toggle();
     }
+    return;
+  case 106:
+    if (fullScreen) {
+      surface.setSize(displayWidth, 100);
+      surface.setLocation(0, 0);
+      cursor();
+      //surface.setLocation(displayWidth/2-width/2, displayHeight/2-height/2);
+      //windowX = displayWidth/2-width/2;
+      //windowY = displayHeight/2-height/2;
+    } else {
+      surface.setSize(displayWidth, displayHeight);
+      surface.setLocation(0, 0);
+      noCursor();
+    }
+    fullScreen = !fullScreen;
+    return;
+  case 97:
+    ontop = !ontop;
+    surface.setAlwaysOnTop(ontop);
     return;
   default:
     return;
   }
   // make sure 0 <= mode < frames.size()
   if (mode >= frames.size()) mode = 0; 
-  if (mode < 0) mode = frames.size() - 1; 
-  background(0); 
-  frameRate(60); 
+  if (mode < 0) mode = frames.size() - 1;
+  frames.get(mode).load();
+  background(0);
+  frameRate(60);
   paused = false;
+  //println("KeyCode: " + keyCode + " key: '" + key + "'");
 }
+/*
+void mousePressed() {
+ if (fullScreen) return;
+ mx = mouseX;
+ my = mouseY;
+ }
+ 
+ void mouseDragged() {
+ if (fullScreen) return;
+ if (noMove) {
+ mx = mouseX;
+ my = mouseY;
+ noMove = false; 
+ return;
+ }
+ int dx = mouseX - mx;
+ int dy = mouseY - my;
+ //println(mouseX + " " + mouseY + " | " + mx + " " + my + " | " + dx + " " + dy + " | " + windowX + " " + windowY);
+ surface.setLocation(windowX + dx, windowY + dx);
+ windowX += dx;
+ windowY += dy;
+ noMove = true;
+ }
+ */

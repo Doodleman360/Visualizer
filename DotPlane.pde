@@ -1,4 +1,4 @@
-class DotPlane implements Frame{
+class DotPlane extends Frame{
   float inc = 0.01;
   float scale = 10;
   int cols, rows;
