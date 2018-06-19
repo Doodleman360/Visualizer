@@ -23,10 +23,10 @@ class Matrix extends Frame {
       for (double x = 0; x < matrix.get(row).length; x++) {
         float val = matrix.get(row)[(int)x];
         //if (val > 0) {
-          stroke(0.0, 255.0, 0.0, Math.abs(val)*255);
+        stroke(0.0, 255.0, 0.0, Math.abs(val)*255);
         /*} else { 
-          stroke(255.0, 0.0, 0.0, -val*255);
-        }*/
+         stroke(255.0, 0.0, 0.0, -val*255);
+         }*/
         point((float)(a*x/size * width), height - (space * row));
       }
     //println(matrix.size());

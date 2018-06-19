@@ -11,7 +11,7 @@ class Waves extends Frame {
   void load() {
     w = width / amt;
   }
-  
+
   void frame() {
     colorMode(RGB);
     noStroke();

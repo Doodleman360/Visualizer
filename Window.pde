@@ -8,7 +8,7 @@ class Window extends Frame {
     bg = loadImage("rain/bg.jpg");
     bg.resize(width, height);
   }
-  
+
   void load() {
     bg.resize(width, height);
   }

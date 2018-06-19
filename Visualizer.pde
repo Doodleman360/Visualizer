@@ -1,3 +1,20 @@
+/*
+ * Audio Visualizer
+ * Author: Doodleman
+ * Contributors: Goofables
+ * Description: Audio visualizer using the Minim library for processing
+ * 
+ * Controls:
+ *   Pick frame - 0..10, a..z
+ *   Next       - Up, Right
+ *   Previous   - Down, Left
+ *   Pause      - Enter
+ *   Debug      - `
+ *   Rotate     - \
+ *   FullScreen - F10
+ *   Pin on top - F1
+ */
+
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
@@ -10,6 +27,7 @@ static AudioInput in;
 static AudioPlayer player;
 static BeatDetect beat;
 static AudioMetaData meta;
+
 int time;
 int wait = 10000;
 int mode = 0;
@@ -32,7 +50,7 @@ void setup() {
   noCursor();
 
   background(0);
-  //text("Made by: Doodleman, using the Minim library\nContributors: Goofables", width/2, height/4);
+  text("Made by: Doodleman, using the Minim library\nContributors: Goofables", width/2, height/4);
 
   minim = new Minim(this);
   //player = minim.loadFile("0"+(int)random(9)+".mp3");
@@ -117,13 +135,13 @@ void keyPressed() {
     fps = !fps;
     println("Debug: " + fps);
     return;
-  case 92: 
+  case 92: // Rotate (\)
     for (int i = 0; i < frames.size(); i++) {
       if (frames.get(i) instanceof Waves2) ((Waves2)frames.get(i)).toggle(); 
       if (frames.get(i) instanceof DotArc) ((DotArc)frames.get(i)).toggle();
     }
     return;
-  case 106:
+  case 106: // F10
     if (fullScreen) {
       surface.setSize(displayWidth, 100);
       surface.setLocation(0, 0);
@@ -138,7 +156,7 @@ void keyPressed() {
     }
     fullScreen = !fullScreen;
     return;
-  case 97:
+  case 97: // F1
     ontop = !ontop;
     surface.setAlwaysOnTop(ontop);
     return;

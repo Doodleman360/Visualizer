@@ -13,7 +13,7 @@ class Sphere extends Frame {
     globe = new PVector[total+1][total+1];
     mix = new float[total+1];
   }
-  
+
   void frame() {
     colorMode(HSB);
     noStroke();
@@ -57,7 +57,7 @@ class Sphere extends Frame {
   }
   float a = 1;
   float b = 1;
-  
+
   float superShape(float theda, float m, float n1, float n2, float n3) {
     float t1 = abs((1/a)*cos(m*theda/4));
     t1 = pow(t1, n2);

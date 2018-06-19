@@ -8,7 +8,7 @@ class Dots extends Frame {
     dx = width/(int)root;
     dy = height/(int)root;
   }
-  
+
   public void frame() {
     fill(0, 0, 0, 64);
     noStroke();

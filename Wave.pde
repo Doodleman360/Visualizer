@@ -4,11 +4,11 @@ class Wave extends Frame {
   float[] wave = new float[(int)amt];
   ArrayList<Integer> max;
   ArrayList<Integer> min;
-  
+
   void load() {
     w = width / amt;
   }
-  
+
   void frame() {
     colorMode(RGB);
     noStroke();
@@ -38,7 +38,6 @@ class Wave extends Frame {
       } else if (wave[i - 1] > wave[i] && wave[i] < wave[i + 1]) {
         min.add(i);
       }
-      
     }
 
     //for (int i = 0; i < amt; i++) {
@@ -62,7 +61,7 @@ class Wave extends Frame {
       stroke(b, 128, 128);
       line(i * w, y1, i * w + w, y2);
     }
-    
+
     popMatrix();
   }
 
